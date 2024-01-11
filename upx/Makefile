@@ -19,6 +19,8 @@ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-src.tar.xz
 PKG_HASH:=1221e725b1a89e06739df27fae394d6bc88aedbe12f137c630ec772522cbc76f
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/$(PKG_NAME)-$(PKG_VERSION)-src
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)-src
 
 HOST_BUILD_DEPENDS:=ucl/host
 
@@ -33,7 +35,7 @@ define Host/Compile
 endef
 
 define Host/Install
-	$(CP) $(HOST_BUILD_DIR)/src/upx.out $(STAGING_DIR_HOST)/bin/upx
+	$(CP) $(HOST_BUILD_DIR)/build/debug/upx $(STAGING_DIR_HOST)/bin/upx
 endef
 
 define Host/Clean
